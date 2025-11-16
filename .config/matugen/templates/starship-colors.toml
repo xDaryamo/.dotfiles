@@ -1,0 +1,92 @@
+format = """\
+[╭╴](fg:arrow)\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$lua\
+$python\
+$nodejs\
+$rust\
+$golang\
+$java\
+$kotlin\
+$dotnet\
+$docker_context\
+$aws\
+$jobs\
+$cmd_duration
+[╰─](fg:arrow)$character\
+"""
+
+palette = "colors"
+
+[fill]
+symbol = " "
+
+[directory]
+style = "fg:color1"
+read_only = " "
+read_only_style = "fg:color9"
+
+[git_branch]
+style = "fg:color8"
+
+[git_status]
+style = "fg:color3"
+
+[lua]
+style = "fg:color2"
+
+[python]
+style = "fg:color2"
+
+[nodejs]
+style = "fg:color2"
+
+[rust]
+style = "fg:color2"
+
+[golang]
+style = "fg:color2"
+
+[java]
+style = "fg:color2"
+
+[kotlin]
+style = "fg:color2"
+
+[dotnet]
+style = "fg:color2"
+
+[docker_context]
+style = "fg:color8"
+
+[aws]
+style = "fg:color8"
+
+[jobs]
+style = "fg:color5"
+
+[cmd_duration]
+style = "fg:color6"
+
+[character]
+format = "$symbol"
+success_symbol = "[❯](fg:color9)"
+error_symbol = "[❯](fg:mustard)"
+vimcmd_symbol = "[❮](fg:color8)"
+
+
+# --- Palette matugen --- #
+[palettes.colors]
+mustard = '#af8700' # example
+color1 = '{{colors.primary_fixed_dim.default.hex}}'
+color2 = '{{colors.on_primary.default.hex}}'
+color3 = '{{colors.on_surface_variant.default.hex}}'
+color4 = '{{colors.surface_container.default.hex}}'
+color5 = '{{colors.on_primary.default.hex}}'
+color6 = '{{colors.surface_dim.default.hex}}'
+color7 = '{{colors.surface.default.hex}}'
+color8 = '{{colors.primary.default.hex}}'
+color9 = '{{colors.tertiary.default.hex}}'

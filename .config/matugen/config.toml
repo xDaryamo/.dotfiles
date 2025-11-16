@@ -1,0 +1,77 @@
+
+[config.wallpaper]
+# Whether to set the wallpaper or not
+set = true
+
+# The base command to run for applying the wallpaper, shouldn't have spaces in it.
+command = "awww"
+
+# The arguments that will be provided to the command.
+# Keywords like {{ mode }} or anything that works inside of hooks doesn't work here.
+# The last argument will be the image path.
+arguments = ["img", "--transition-type", "center"]
+
+# For example, killing the wallpaper daemon. Usage is like a normal hook.
+# pre_hook = ""
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+
+[templates.alacritty]
+input_path = '~/.config/matugen/templates/alacritty-colors.toml'
+output_path = '~/.config/alacritty/alacritty-colors.toml'
+
+[templates.rofi]
+input_path = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/rofi/colors/colors.rasi'
+
+[templates.waybar]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/waybar/colors.css' 
+post_hook = 'pkill waybar; uwsm app -- waybar & disown'
+
+[templates.gtk3]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-3.0/colors.css'
+post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3'
+
+[templates.gtk4]
+input_path = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/gtk-4.0/colors.css'
+
+[templates.papirus-folders]
+input_path = "~/.config/matugen/templates/papirus-folders.toml"
+output_path = "~/.cache/papirus-folders.toml"
+compare_to = "{{colors.primary.default.hex}}"
+colors_to_compare = [
+{ name = "cat-mocha-rosewater", color = "#f5e0dc" },
+{ name = "cat-mocha-flamingo", color = "#f2cdcd" },
+{ name = "cat-mocha-pink", color = "#f5c2e7" },
+{ name = "cat-mocha-mauve", color = "#cba6f7" },
+{ name = "cat-mocha-red", color = "#f38ba8" },
+{ name = "cat-mocha-maroon", color = "#eba0ac" },
+{ name = "cat-mocha-peach", color = "#fab387" },
+{ name = "cat-mocha-yellow", color = "#f9e2af" },
+{ name = "cat-mocha-green", color = "#a6e3a1" },
+{ name = "cat-mocha-teal", color = "#94e2d5" },
+{ name = "cat-mocha-sky", color = "#89dceb" },
+{ name = "cat-mocha-sapphire", color = "#74c7ec" },
+{ name = "cat-mocha-blue", color = "#89b4fa" },
+{ name = "cat-mocha-lavender", color = "#b4befe" },
+]
+post_hook = "DISABLE_UPDATE_ICON_CACHE=1 papirus-folders -C {{closest_color}} -t $HOME/.local/share/icons/Papirus-Dark-Matugen -o"
+# Copy the "Papirus" and "Papirus-Dark" folders from /usr/share/icons or /usr/share/themes into ~/.local/share/icons and ~/.local/share/themes respectively so the current user can use them without root permissions.
+
+[templates.swaync]
+input_path = '~/.config/matugen/templates/colors.css'
+output_path = '~/.config/swaync/colors.css'
+
+
+[templates.btop]
+input_path = '~/.config/matugen/templates/btop.theme'
+output_path = '~/.config/btop/themes/matugen.theme'
+
+[templates.starship]
+input_path = '~/.config/matugen/templates/starship-colors.toml'
+output_path = '~/.config/starship.toml'

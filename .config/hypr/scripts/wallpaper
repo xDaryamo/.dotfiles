@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Simple wallpaper + colors + lockscreen updater
+# Requires: matugen, hyprctl, hyprpaper
+
+WALL="$1"
+
+if [ -z "$WALL" ]; then
+    echo "Usage: change-wallpaper /path/to/wallpaper.png"
+    exit 1
+fi
+
+if [ ! -f "$WALL" ]; then
+    echo "Error: file not found: $WALL"
+    exit 1
+fi
+
+# 1. Update current wallpaper for Hyprlock
+cp "$WALL" "$HOME/.current_wallpaper"
+
+# 2. Regenerate colors with Matugen
+matugen image "$WALL"
+
+# 3. Reload Hyprland config (so hyprlock colors update too)
+hyprctl reload
+
+
+# 4. Optional notification (if you use a notification daemon)
+notify-send "Wallpaper changed" "Matugen colors & Hyprlock updated."

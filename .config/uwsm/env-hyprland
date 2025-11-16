@@ -1,0 +1,2 @@
+export HYPRSHOT_DIR=~/Pictures/Screenshots
+export HYPRCURSOR_SIZE=24
